@@ -1,15 +1,15 @@
 <template>
   <v-layout row wrap class="pa-5">
-    <v-flex xs12 v-if="pay">
+    <v-flex xs12>
       <v-card>
         <v-card-title class="pa-3">
           <div class="card_title">
             <v-btn icon text class="mr-5" color="primary" @click="$router.go(-1)">
               <v-icon small>fas fa-arrow-left</v-icon>
             </v-btn>
-            <h1 class="title">Платеж - {{title}}</h1>
+            <h1 class="title">Платеж - {{pay.title}}</h1>
           </div>
-          <v-list-item two-line v-for="(item,i) in pay" :key="i">
+          <v-list-item two-line v-for="(item,i) in pay.arr" :key="i">
             <v-list-item-content>
               <v-list-item-subtitle>{{item.name}}</v-list-item-subtitle>
               <v-list-item-title>{{item.val}}</v-list-item-title>
@@ -37,45 +37,47 @@ export default {
   },
   computed: {
     pay () {
-      const vm = this
       const data = this.$store.getters['account/PAY_ITEM'](this.id)
-      let arr = []
+      let pay = {
+        title: '',
+        arr: []
+      }
       for (let row in data) {
         let obj = {}
         switch (row) {
           case 'title':
-            vm.title = data[row]
+            pay.title = data[row]
             break;
           case 'date':
             obj['name'] = 'Дата'
             obj['val'] = data[row]
-            arr.push(obj)
+            pay.arr.push(obj)
             break;
           case 'status':
             obj['name'] = 'Статус'
             obj['val'] = data[row]
-            arr.push(obj)
+            pay.arr.push(obj)
             break;
           case 'summ':
             obj['name'] = 'Сумма'
             obj['val'] = data[row]
-            arr.push(obj)
+            pay.arr.push(obj)
             break;
           case 'comment':
             obj['name'] = 'Комментарий'
             obj['val'] = data[row]
-            arr.push(obj)
+            pay.arr.push(obj)
             break;
           case 'beneficiary':
             obj['name'] = 'Реквизиты получателя'
             obj['val'] = data[row]
-            arr.push(obj)
+            pay.arr.push(obj)
             break;
           default:
             break;
         }
       }
-      return arr
+      return pay
     }
   }
 }
