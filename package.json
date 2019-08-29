@@ -1,0 +1,20 @@
+{
+  "name": "test-nord-clan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "setup": "cd ./vue && npm install && cd ../",
+    "vue": "cd ./vue && npm run serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Karbonru/test-nord-clan.git"
+  },
+  "author": "Roman Khmurenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Karbonru/test-nord-clan/issues"
+  },
+  "homepage": "https://github.com/Karbonru/test-nord-clan#readme"
+}
