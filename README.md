@@ -5,7 +5,11 @@ npm run setup
 ```
 ### запуск vue
 ```
-npm run vue
+npm run vue-app
+```
+### запуск react
+```
+npm run react-app
 ```
 ## Существующие аккаунты
 логин: ee@ee.ee
